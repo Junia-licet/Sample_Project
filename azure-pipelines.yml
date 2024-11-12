@@ -6,11 +6,13 @@
 trigger:
 - main
 
-pool: Agent
+pool: testagent
+
+steps:
 - task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
-    goals: 'Compile'
+    goals: 'compile'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
@@ -18,6 +20,4 @@ pool: Agent
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
-
-steps:
 
